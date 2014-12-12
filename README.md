@@ -132,3 +132,7 @@ LICENSE
 ------
 
 See also [*LICENSE*](https://github.com/iTonyYo/WSK_IMAGE/blob/master/LICENSE '点击 · Click') .
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/iTonyYo/node-find-folder/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
