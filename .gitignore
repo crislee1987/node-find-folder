@@ -134,3 +134,4 @@ sftp-config.json
 ##########################
 
 dest/
+backup/
