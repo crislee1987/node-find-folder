@@ -24,6 +24,10 @@ gulp.task 'coffeescript', ->
 
     .pipe $.plumber()
 
+    .pipe $.coffeelint 'coffeelint.json'
+
+    .pipe $.coffeelint.reporter()
+
     .pipe $.coffee cfg.cs_opts
 
     .pipe $.rename

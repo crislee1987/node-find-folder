@@ -9,7 +9,7 @@ gulp = require('gulp');
 $ = require('gulp-load-plugins')();
 
 gulp.task('coffeescript', function() {
-  return gulp.src('dev/node.find.folder.coffee').pipe($.plumber()).pipe($.coffee(cfg.cs_opts)).pipe($.rename({
+  return gulp.src('dev/node.find.folder.coffee').pipe($.plumber()).pipe($.coffeelint('coffeelint.json')).pipe($.coffeelint.reporter()).pipe($.coffee(cfg.cs_opts)).pipe($.rename({
     dirname: '',
     basename: 'index',
     extname: '.js'
