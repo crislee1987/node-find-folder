@@ -1,5 +1,7 @@
 node-find-folder
 ================
+
+[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/iTonyYo/node-find-folder?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Build status](https://ci.appveyor.com/api/projects/status/tgg5rob05g94mao9/branch/master?svg=true)](https://ci.appveyor.com/project/iTonyYo/node-find-folder/branch/master) [![Build Status](https://travis-ci.org/iTonyYo/node-find-folder.svg)](https://travis-ci.org/iTonyYo/node-find-folder) [![Project Dependencies](https://david-dm.org/iTonyYo/node-find-folder.png)](https://david-dm.org/iTonyYo/node-find-folder '点击 · Click') [![Project devDependencies](https://david-dm.org/iTonyYo/node-find-folder/dev-status.png)](https://david-dm.org/iTonyYo/node-find-folder#info=devDependencies '点击 · Click')
 
 **Use just the name of folder** to find folder(s), rather than through path  - To search the targeted directory(s) you want，returns array type data. Then, you can do anything you want! For batch operations which according to the directory(s).
