@@ -218,11 +218,9 @@ _filter = (arr, filter) ->
 
 
 
-getFoldersInRoot = =>
+getFoldersInRoot = (->
 
     instance = undefined
-
-    ctx = {}
 
     init = ->
 
@@ -246,15 +244,18 @@ getFoldersInRoot = =>
 
         return traversal
 
-    ctx.getInstance = ->
+    return {
 
-        if !instance
+        getInstance: ->
 
-            instance = init()
+            if !instance
 
-        return instance
+                instance = init()
 
-    return ctx
+            return instance
+    }
+
+)()
 
 
 

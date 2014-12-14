@@ -146,34 +146,32 @@ _filter = function(arr, filter) {
   });
 };
 
-getFoldersInRoot = (function(_this) {
-  return function() {
-    var ctx, init, instance;
-    instance = void 0;
-    ctx = {};
-    init = function() {
-      var folders, list, traversal, _deal;
-      list = fs.readdirSync(process.cwd());
-      folders = [];
-      traversal = [];
-      _deal = function(_item, _index, _array) {
-        if (isDir(_item)) {
-          folders.push(_item);
-        }
-      };
-      list.forEach(_deal);
-      traversal = _filter(folders, _options.nottraversal);
-      return traversal;
+getFoldersInRoot = (function() {
+  var init, instance;
+  instance = void 0;
+  init = function() {
+    var folders, list, traversal, _deal;
+    list = fs.readdirSync(process.cwd());
+    folders = [];
+    traversal = [];
+    _deal = function(_item, _index, _array) {
+      if (isDir(_item)) {
+        folders.push(_item);
+      }
     };
-    ctx.getInstance = function() {
+    list.forEach(_deal);
+    traversal = _filter(folders, _options.nottraversal);
+    return traversal;
+  };
+  return {
+    getInstance: function() {
       if (!instance) {
         instance = init();
       }
       return instance;
-    };
-    return ctx;
+    }
   };
-})(this);
+})();
 
 traversal_pattern = function(target) {
   var pattern;
