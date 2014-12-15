@@ -32,8 +32,24 @@
 
     "clp": ["coffeelint", "notify"],
 
-    "path": {},
+    "path": {
 
-    "message": {}
+        "dev": "./dev/",
+
+        "root_js_src": "./",
+
+        "splited_tasks_js_src": "./gulp/"
+
+    },
+
+    "message": {
+
+        "coffeelint": "Lint completely!",
+
+        "cmprs_root_js_src": "JS files from root have been compressed completely!",
+
+        "cmprs_splited_tasks_js_src": "JS files from 'gulp' folder have been compressed completely!"
+
+    }
 
 }
