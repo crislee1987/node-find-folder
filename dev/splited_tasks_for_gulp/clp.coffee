@@ -22,7 +22,7 @@ parse_args   = require 'minimist'
 
 __args   = parse_args process.argv.slice(2),
 
-	'boolean': config.clp
+	'boolean': cfg.clp
 
 
 
