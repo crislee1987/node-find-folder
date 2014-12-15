@@ -6,6 +6,20 @@
 
     },
 
+    "cmprs_opts": {
+
+        "mangle": {
+
+            "except": [
+
+                "require"
+
+            ]
+
+        }
+
+    },
+
     "path": {},
 
     "message": {}
