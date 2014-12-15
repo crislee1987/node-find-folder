@@ -210,11 +210,13 @@ arrayTo_Obj = (arr) ->
 
 _filter = (arr, filter) ->
 
-    fltObj = arrayTo_Obj filter
+    fltObj = undefined
+
+    fltObj = arrayTo_Obj(filter)
 
     arr.filter (_item, _index, _array) ->
 
-        return !(_item in fltObj)
+        (_item not of fltObj)
 
 
 
@@ -225,6 +227,8 @@ getFoldersInRoot = (->
     init = ->
 
         list = fs.readdirSync process.cwd()
+
+        # test script $.util.log 'Files/Folders in root of project: ' + list
 
         folders = []
 
@@ -240,7 +244,15 @@ getFoldersInRoot = (->
 
         list.forEach _deal
 
+        # test script $.util.log 'Folders in root of project: ' + folders
+
         traversal = _filter folders, _options.nottraversal
+
+        # test script $.util.log 'Folders need to be traversed: ' + traversal
+
+        # test script $.util.log 'Real options: ' + _options.nottraversal
+
+        # test script $.util.log 'Test for "_filter" method: ' + _filter ['.git', 'node_modules', 'dest'], _options.nottraversal
 
         return traversal
 
@@ -261,7 +273,8 @@ getFoldersInRoot = (->
 
 traversal_pattern = (target) ->
 
-    pattern = '+(' + getFoldersInRoot.getInstance().join('|') + ')/**/' + target #matches zero or more directories and subdirectories searching for matches
+    #matches zero or more directories and subdirectories searching for matches
+    pattern = '+(' + getFoldersInRoot.getInstance().join('|') + ')/**/' + target
 
     return pattern
 

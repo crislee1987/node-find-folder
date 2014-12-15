@@ -1,6 +1,5 @@
 'use strict';
-var $, arrayTo_Obj, extend, fs, getFoldersInRoot, getfolders, glob, gulp, ifExistInRoot, isDir, isFile, isObject, isString, path, traversal_pattern, _default, _filter, _filter_, _forEach, _options,
-  __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
+var $, arrayTo_Obj, extend, fs, getFoldersInRoot, getfolders, glob, gulp, ifExistInRoot, isDir, isFile, isObject, isString, path, traversal_pattern, _default, _filter, _filter_, _forEach, _options;
 
 _options = void 0;
 
@@ -140,9 +139,10 @@ arrayTo_Obj = function(arr) {
 
 _filter = function(arr, filter) {
   var fltObj;
+  fltObj = void 0;
   fltObj = arrayTo_Obj(filter);
   return arr.filter(function(_item, _index, _array) {
-    return !(__indexOf.call(fltObj, _item) >= 0);
+    return !(_item in fltObj);
   });
 };
 
