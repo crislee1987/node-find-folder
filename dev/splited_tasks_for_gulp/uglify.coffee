@@ -20,6 +20,10 @@ lazypipe     = require 'lazypipe'
 
 mrg          = require 'merge-stream'
 
+extend       = require 'xtend'
+
+clp          = require './clp'
+
 
 
 _cmprs = lazypipe()
@@ -38,8 +42,20 @@ gulp.task 'cmprs_js', ->
 
     .pipe gulp.dest './'
 
+    .pipe $.if clp.notify, $.notify extend cfg.notify_opts,
+
+        title: 'JS Compression'
+
+        message: 'JS files from root have been compressed completely!'
+
     splited_tasks_js_src.pipe _cmprs()
 
     .pipe gulp.dest './gulp'
 
-    mrg root_js_src, splited_tasks_js_src
+    .pipe $.if clp.notify, $.notify extend cfg.notify_opts,
+
+        title: 'JS Compression'
+
+        message: 'JS files from "gulp" folder have been compressed completely!'
+
+    return mrg root_js_src, splited_tasks_js_src
