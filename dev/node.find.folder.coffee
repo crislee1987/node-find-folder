@@ -93,7 +93,7 @@ unless [].includes
 
         value: (searchElement) -> #(searchElement, fromIndex)
 
-            throw new TypeError("Cannot convert this value to object") if @ is `undefined` or @ is null
+            throw new TypeError('Cannot convert this value to object') if @ is undefined or @ is null
 
             O = Object @
 
@@ -184,7 +184,7 @@ isObject = (target) ->
 
 
 
-isArray = () ->
+isArray = ->
 
     rslt = if Object::toString.call(arguments[0]) is '[object Array]' then true else false
 
