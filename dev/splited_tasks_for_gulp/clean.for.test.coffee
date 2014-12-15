@@ -30,7 +30,15 @@ order.forEach (the) ->
 
     gulp.task cln_prefix + the, ->
 
-        ff(the).forEach (_item, _index, _array) ->
+        $.util.log 'The results of the folder to be find found: ', ff the,
+
+            nottraversal: ['.git', 'node_modules', 'backup']
+
+        ff_result = ff the,
+
+            nottraversal: ['.git', 'node_modules', 'backup']
+
+        ff_result.forEach (_item, _index, _array) ->
 
             del _item + '/*'
 

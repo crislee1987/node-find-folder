@@ -18,7 +18,14 @@ cln_prefix = 'clean-';
 
 order.forEach(function(the) {
   gulp.task(cln_prefix + the, function() {
-    ff(the).forEach(function(_item, _index, _array) {
+    var ff_result;
+    $.util.log('The results of the folder to be find found: ', ff(the, {
+      nottraversal: ['.git', 'node_modules', 'backup']
+    }));
+    ff_result = ff(the, {
+      nottraversal: ['.git', 'node_modules', 'backup']
+    });
+    ff_result.forEach(function(_item, _index, _array) {
       del(_item + '/*');
     });
   });
