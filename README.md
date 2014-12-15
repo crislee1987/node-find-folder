@@ -127,6 +127,14 @@ order.forEach(function (the) {
     });
 
 });
+
+gulp.task('clean', order.map(function (the) {
+
+    return cln_prefix + the;
+
+}));
+
+...
 ```
 The code above is too much... and not flexible...
 
@@ -158,6 +166,12 @@ order.forEach(function (the) {
     });
 
 });
+
+gulp.task('clean', order.map(function (the) {
+
+    return cln_prefix + the;
+
+}));
 
 ...
 ```
