@@ -14,10 +14,6 @@ _options = undefined
 
 
 
-gulp   = require 'gulp'
-
-path   = require 'path'
-
 fs     = require 'fs'
 
 glob   = require 'glob'
@@ -28,7 +24,7 @@ isFile = require 'is-file'
 
 isDir  = require 'is-directory'
 
-$      = require('gulp-load-plugins')()
+util   = require 'gulp-util'
 
 
 

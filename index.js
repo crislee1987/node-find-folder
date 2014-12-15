@@ -1,11 +1,7 @@
 'use strict';
-var $, arrayTo_Obj, extend, fs, getFolders, getFoldersInRoot, glob, gulp, ifExistInRoot, isDir, isFile, isObject, isString, path, traversal_pattern, _default, _filter, _filter_, _forEach, _options;
+var arrayTo_Obj, extend, fs, getFolders, getFoldersInRoot, glob, ifExistInRoot, isDir, isFile, isObject, isString, traversal_pattern, util, _default, _filter, _filter_, _forEach, _options;
 
 _options = void 0;
-
-gulp = require('gulp');
-
-path = require('path');
 
 fs = require('fs');
 
@@ -17,7 +13,7 @@ isFile = require('is-file');
 
 isDir = require('is-directory');
 
-$ = require('gulp-load-plugins')();
+util = require('gulp-util');
 
 _default = {
   nottraversal: ['.git', 'node_modules'],
