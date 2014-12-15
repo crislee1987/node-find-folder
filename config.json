@@ -30,7 +30,7 @@
 
     },
 
-    "clp": ["notify"],
+    "clp": ["coffeelint", "notify"],
 
     "path": {},
 
