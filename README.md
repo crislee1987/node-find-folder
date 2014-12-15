@@ -139,15 +139,15 @@ Code is simple, flexible and well-understood! The most important thing is that y
 API
 ------
 
-#### getfolders(folderName, [options])
+#### getFolders(folderName, [options])
 
 Return array type data which contain the path(s) of matched folder(s).
 
 #### Options
 
-+ `nottraversal`, top-level directories which need to be ignored.
++ `nottraversal`, default value is `['.git', 'node_modules']`, for top-level directories which need to be ignored.
 
-+ `ignore`, specific path to folder(s) which need to be ignored.
++ `ignore`, default value is `[]`, for specific path to folder(s) which need to be ignored.
 
 
 
