@@ -1,12 +1,14 @@
-node-find-folder
-================
+find-folder
+===========
 
 [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/iTonyYo/node-find-folder?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Build status](https://ci.appveyor.com/api/projects/status/tgg5rob05g94mao9/branch/master?svg=true)](https://ci.appveyor.com/project/iTonyYo/node-find-folder/branch/master) [![Build Status](https://travis-ci.org/iTonyYo/node-find-folder.svg)](https://travis-ci.org/iTonyYo/node-find-folder) [![Project Dependencies](https://david-dm.org/iTonyYo/node-find-folder.png)](https://david-dm.org/iTonyYo/node-find-folder '点击 · Click') [![Project devDependencies](https://david-dm.org/iTonyYo/node-find-folder/dev-status.png)](https://david-dm.org/iTonyYo/node-find-folder#info=devDependencies '点击 · Click') [![Issues Closed In...](http://img.shields.io/badge/Issues%20Closed%20In-Not%20Available-red.svg?style=flat)](http://issuestats.com/github/iTonyYo/node-find-folder '点击 · Click') [![Pull Request Closed In...](http://img.shields.io/badge/Pull%20Requests%20Closed%20In-5%20minutes-brightgreen.svg?style=flat)](http://issuestats.com/github/iTonyYo/node-find-folder '点击 · Click')
+[![Build status](https://ci.appveyor.com/api/projects/status/tgg5rob05g94mao9/branch/master?svg=true)](https://ci.appveyor.com/project/iTonyYo/node-find-folder/branch/master) [![Build Status](https://travis-ci.org/iTonyYo/node-find-folder.svg)](https://travis-ci.org/iTonyYo/node-find-folder) [![Project Dependencies](https://david-dm.org/iTonyYo/node-find-folder.png)](https://david-dm.org/iTonyYo/node-find-folder '点击 · Click') [![Project devDependencies](https://david-dm.org/iTonyYo/node-find-folder/dev-status.png)](https://david-dm.org/iTonyYo/node-find-folder#info=devDependencies '点击 · Click') [![Issues Closed In...](http://img.shields.io/badge/Issues%20Closed%20In-Not%20Available-red.svg?style=flat)](http://issuestats.com/github/iTonyYo/node-find-folder '点击 · Click') [![Pull Request Closed In...](http://img.shields.io/badge/Pull%20Requests%20Closed%20In-5%20minutes-brightgreen.svg?style=flat)](http://issuestats.com/github/iTonyYo/node-find-folder '点击 · Click') [![npm version](https://badge.fury.io/js/node-find-folder.svg)](http://badge.fury.io/js/node-find-folder)
+
+![NPM · downloads, rank and stars](https://nodei.co/npm/node-find-folder.png?downloads=true&downloadRank=true&stars=true)
 
 ![node-find-folder](http://h.hiphotos.baidu.com/image/pic/item/359b033b5bb5c9ea82bd8b53d639b6003af3b330.jpg)
 
-**Use just the name of folder** to find folder(s), rather than through path  - To search the targeted directory(s) you want，returns array type data. Then, you can do anything you want! For batch operations which according to the directory(s).
+**Use just the name of folder** to find the folder(s), rather than through path  - To search the targeted directory(s) you want，returns array type data. Then, you can do anything you want! For batch operations which according to the directory(s).
 
 It uses the `glob` library to do some matching work.
 
@@ -15,7 +17,7 @@ It uses the `glob` library to do some matching work.
 Usage
 -----
 
-Folder structure for reference,
+**Folder structure for reference,**
 
 ```
 root/
@@ -23,18 +25,35 @@ root/
 ├── [doc]
 ├── [node_modules]
 ├── [dev]
+│   ├── [code]
+│   │   ├── [splited_tasks_for_gulp]
+│   ├── [image]
+│   │   ├── [apple_touch_icon]
+│   │   ├── [illustration]
+│   │   ├── [pinned_site_icon]
+│   │   ├── [ui_icon_keyamoon_16px]
+│   │   ├── [ui_icon_keyamoon_32px]
+│   │   ├── [ui_icon_social_32px]
+│   │   ├── [ui_icon_social_64px]
+│   │   │   ├── [1]
 ├── [dest]
 ├── [gulp]
 ```
 
-Code,
+**Install**
+
+![how to install](https://nodei.co/npm/node-find-folder.png?mini=true)
+
+You can use `--save-dev` param after the command above to save `node-find-folder` to `package.json`
+
+**Code details,**
 
 ```js
-var ff, folders;
+var ff, ff_result;
 
 ff = require('node-find-folder');
 
-folders = ff('1'); //output: ['dev/ui_icon_social_64px/1']
+ff_result = ff('1'); //output: ['dev/image/ui_icon_social_64px/1']
 ```
 
 
