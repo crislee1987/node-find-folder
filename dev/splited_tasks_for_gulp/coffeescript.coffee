@@ -16,6 +16,18 @@ gulp     = require 'gulp'
 
 $        = require('gulp-load-plugins')()
 
+clp      = require './clp'
+
+lazypipe = require 'lazypipe'
+
+
+
+_coffeelint = lazypipe()
+
+    .pipe $.coffeelint, 'coffeelint.json'
+
+    .pipe $.coffeelint.reporter
+
 
 
 gulp.task 'coffeescript', ->
@@ -24,9 +36,7 @@ gulp.task 'coffeescript', ->
 
     .pipe $.plumber()
 
-    .pipe $.coffeelint 'coffeelint.json'
-
-    .pipe $.coffeelint.reporter()
+    .pipe $.if clp.coffeelint, _coffeelint()
 
     .pipe $.coffee cfg.cs_opts
 
