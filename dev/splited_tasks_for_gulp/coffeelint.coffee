@@ -16,6 +16,10 @@ gulp     = require 'gulp'
 
 $        = require('gulp-load-plugins')()
 
+extend   = require 'xtend'
+
+clp      = require './clp'
+
 
 
 gulp.task 'coffeelint', ->
@@ -25,3 +29,9 @@ gulp.task 'coffeelint', ->
     .pipe $.coffeelint 'coffeelint.json'
 
     .pipe $.coffeelint.reporter()
+
+    .pipe $.if clp.notify, $.notify extend cfg.notify_opts,
+
+        title: 'CoffeeScript'
+
+        message: 'Lint completely!'
