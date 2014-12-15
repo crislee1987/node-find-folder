@@ -93,50 +93,42 @@ unless [].includes
 
         value: (searchElement) -> #(searchElement, fromIndex)
 
-            if @ is undefined or @ is null
+            throw new TypeError("Cannot convert this value to object") if @ is `undefined` or @ is null
 
-                throw new TypeError 'Cannot convert this value to object'
+            O = Object @
 
-                O = Object @
+            len = parseInt O.length or 0
 
-                len = parseInt O.length or 0
+            return false if len is 0
 
-                if len is 0
+            n = parseInt arguments[1] or 0
 
-                    return false
+            return false if n >= len
 
-                n = parseInt arguments[1] or 0
+            if n >= 0
 
-                if n >= len
+                k = n
 
-                    return false
+            else
 
-                if n >= 0
+                k = len + n
 
-                    k = n
+                k = 0 if k < 0
 
-                else
+            while k < len
 
-                    k = len + n
+                currentElement = O[k]
 
-                    if k < 0
+                return true  if searchElement is currentElement or searchElement isnt searchElement and currentElement isnt currentElement
 
-                        k = 0
+                k++
 
-                while k < len
-
-                    currentElement = O[k]
-
-                    if searchElement is currentElement or searchElement isnt searchElement and currentElement isnt currentElement
-
-                        return true
-
-                        k++
-
-            return
+            false
 
 
 
+# ES 5.1 http://www.ecma-international.org/ecma-262/5.1/#sec-15.4.4.20
+# ES 6 http://people.mozilla.org/~jorendorff/es6-draft.html#sec-array.prototype.filter
 unless Array::filter
 
     _filter_ = (fun) -> #(fun, thisArg)
@@ -188,25 +180,35 @@ isString = ->
 
 isObject = (target) ->
 
-    rslt = if target isnt undefined and target.length is undefined then true or false
+    rslt = if target isnt undefined and target.length is undefined then true else false
 
 
 
-arrayTo_Obj = (arr) ->
+isArray = () ->
+
+    rslt = if Object::toString.call(arguments[0]) is '[object Array]' then true else false
+
+
+
+arrayTo_Obj = (filter) ->
 
     obj = {}
 
-    arr.forEach (_item, _index, _array) ->
+    if isArray filter
 
-        obj[_item] = _index
+        filter.forEach (_item, _index, _array) ->
+
+            obj[_item] = _index
+
+    else
+
+        obj[filter] = 0
 
     return obj
 
 
 
 _filter = (arr, filter) ->
-
-    fltObj = undefined
 
     fltObj = arrayTo_Obj(filter)
 
@@ -216,7 +218,7 @@ _filter = (arr, filter) ->
 
 
 
-getFoldersInRoot = (->
+traverse_scope = (->
 
     instance = undefined
 
@@ -224,7 +226,7 @@ getFoldersInRoot = (->
 
         list = fs.readdirSync process.cwd()
 
-        # test script $.util.log 'Files/Folders in root of project: ' + list
+        # test script util.log 'Files/Folders in root of project: ' + list
 
         folders = []
 
@@ -240,15 +242,15 @@ getFoldersInRoot = (->
 
         list.forEach _deal
 
-        # test script $.util.log 'Folders in root of project: ' + folders
+        # test script util.log 'Folders in root of project: ' + folders
 
         traversal = _filter folders, _options.nottraversal
 
-        # test script $.util.log 'Folders need to be traversed: ' + traversal
+        # test script util.log 'Folders need to be traversed: ' + traversal
 
-        # test script $.util.log 'Real options: ' + _options.nottraversal
+        # test script util.log 'Real options: ' + _options.nottraversal
 
-        # test script $.util.log 'Test for "_filter" method: ' + _filter ['.git', 'node_modules', 'dest'], _options.nottraversal
+        # test script util.log 'Test for "_filter" method: ' + _filter ['.git', 'node_modules', 'dest'], _options.nottraversal
 
         return traversal
 
@@ -267,18 +269,24 @@ getFoldersInRoot = (->
 
 
 
-traversal_pattern = (target) ->
-
-    #matches zero or more directories and subdirectories searching for matches
-    pattern = '+(' + getFoldersInRoot.getInstance().join('|') + ')/**/' + target
-
-    return pattern
-
-
-
 ifExistInRoot = (target) ->
 
-    getFoldersInRoot.getInstance().includes target
+    traverse_scope.getInstance().includes target
+
+
+
+traversal_pattern = (target) ->
+
+    if ifExistInRoot target
+
+        #matches zero or more directories and subdirectories searching for matches
+        pattern = '+(' + _filter(traverse_scope.getInstance(), target).join('|') + ')/**/' + target
+
+    else
+
+        pattern = '+(' + traverse_scope.getInstance().join('|') + ')/**/' + target
+
+    return pattern
 
 
 

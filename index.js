@@ -1,5 +1,5 @@
 'use strict';
-var arrayTo_Obj, extend, fs, getFolders, getFoldersInRoot, glob, ifExistInRoot, isDir, isFile, isObject, isString, traversal_pattern, util, _default, _filter, _filter_, _forEach, _options;
+var arrayTo_Obj, extend, fs, getFolders, glob, ifExistInRoot, isArray, isDir, isFile, isObject, isString, traversal_pattern, traverse_scope, util, _default, _filter, _filter_, _forEach, _options;
 
 _options = void 0;
 
@@ -55,33 +55,34 @@ if (![].includes) {
     writable: true,
     value: function(searchElement) {
       var O, currentElement, k, len, n;
-      if (this === void 0 || this === null) {
-        throw new TypeError('Cannot convert this value to object');
-        O = Object(this);
-        len = parseInt(O.length || 0);
-        if (len === 0) {
-          return false;
-        }
-        n = parseInt(arguments[1] || 0);
-        if (n >= len) {
-          return false;
-        }
-        if (n >= 0) {
-          k = n;
-        } else {
-          k = len + n;
-          if (k < 0) {
-            k = 0;
-          }
-        }
-        while (k < len) {
-          currentElement = O[k];
-          if (searchElement === currentElement || searchElement !== searchElement && currentElement !== currentElement) {
-            return true;
-            k++;
-          }
+      if (this === undefined || this === null) {
+        throw new TypeError("Cannot convert this value to object");
+      }
+      O = Object(this);
+      len = parseInt(O.length || 0);
+      if (len === 0) {
+        return false;
+      }
+      n = parseInt(arguments[1] || 0);
+      if (n >= len) {
+        return false;
+      }
+      if (n >= 0) {
+        k = n;
+      } else {
+        k = len + n;
+        if (k < 0) {
+          k = 0;
         }
       }
+      while (k < len) {
+        currentElement = O[k];
+        if (searchElement === currentElement || searchElement !== searchElement && currentElement !== currentElement) {
+          return true;
+        }
+        k++;
+      }
+      return false;
     }
   });
 }
@@ -121,28 +122,36 @@ isString = function() {
 
 isObject = function(target) {
   var rslt;
-  return rslt = target !== void 0 && target.length === void 0 ? true || false : void 0;
+  return rslt = target !== void 0 && target.length === void 0 ? true : false;
 };
 
-arrayTo_Obj = function(arr) {
+isArray = function() {
+  var rslt;
+  return rslt = Object.prototype.toString.call(arguments[0]) === '[object Array]' ? true : false;
+};
+
+arrayTo_Obj = function(filter) {
   var obj;
   obj = {};
-  arr.forEach(function(_item, _index, _array) {
-    return obj[_item] = _index;
-  });
+  if (isArray(filter)) {
+    filter.forEach(function(_item, _index, _array) {
+      return obj[_item] = _index;
+    });
+  } else {
+    obj[filter] = 0;
+  }
   return obj;
 };
 
 _filter = function(arr, filter) {
   var fltObj;
-  fltObj = void 0;
   fltObj = arrayTo_Obj(filter);
   return arr.filter(function(_item, _index, _array) {
     return !(_item in fltObj);
   });
 };
 
-getFoldersInRoot = (function() {
+traverse_scope = (function() {
   var init, instance;
   instance = void 0;
   init = function() {
@@ -169,14 +178,18 @@ getFoldersInRoot = (function() {
   };
 })();
 
-traversal_pattern = function(target) {
-  var pattern;
-  pattern = '+(' + getFoldersInRoot.getInstance().join('|') + ')/**/' + target;
-  return pattern;
+ifExistInRoot = function(target) {
+  return traverse_scope.getInstance().includes(target);
 };
 
-ifExistInRoot = function(target) {
-  return getFoldersInRoot.getInstance().includes(target);
+traversal_pattern = function(target) {
+  var pattern;
+  if (ifExistInRoot(target)) {
+    pattern = '+(' + _filter(traverse_scope.getInstance(), target).join('|') + ')/**/' + target;
+  } else {
+    pattern = '+(' + traverse_scope.getInstance().join('|') + ')/**/' + target;
+  }
+  return pattern;
 };
 
 getFolders = function() {
