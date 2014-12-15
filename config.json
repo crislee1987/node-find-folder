@@ -20,6 +20,8 @@
 
     },
 
+    "clp": ["notify"],
+
     "path": {},
 
     "message": {}
