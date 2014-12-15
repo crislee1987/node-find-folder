@@ -1,5 +1,5 @@
 'use strict';
-var $, arrayTo_Obj, extend, fs, getFoldersInRoot, getfolders, glob, gulp, ifExistInRoot, isDir, isFile, isObject, isString, path, traversal_pattern, _default, _filter, _filter_, _forEach, _options;
+var $, arrayTo_Obj, extend, fs, getFolders, getFoldersInRoot, glob, gulp, ifExistInRoot, isDir, isFile, isObject, isString, path, traversal_pattern, _default, _filter, _filter_, _forEach, _options;
 
 _options = void 0;
 
@@ -183,7 +183,7 @@ ifExistInRoot = function(target) {
   return getFoldersInRoot.getInstance().includes(target);
 };
 
-getfolders = function() {
+getFolders = function() {
   var option, target, traversal_matched;
   target = arguments[0];
   option = arguments[1];
@@ -203,4 +203,4 @@ getfolders = function() {
   return _filter(traversal_matched, _options.ignore);
 };
 
-module.exports = getfolders;
+module.exports = getFolders;

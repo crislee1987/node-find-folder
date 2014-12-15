@@ -286,7 +286,7 @@ ifExistInRoot = (target) ->
 
 
 
-getfolders = ->
+getFolders = ->
 
     target = arguments[0]
 
@@ -314,4 +314,4 @@ getfolders = ->
 
 
 
-module.exports = getfolders
+module.exports = getFolders
