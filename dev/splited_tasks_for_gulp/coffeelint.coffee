@@ -24,7 +24,7 @@ clp      = require './clp'
 
 gulp.task 'coffeelint', ->
 
-    gulp.src 'dev/node.find.folder.coffee'
+    gulp.src cfg.path.dev + 'node.find.folder.coffee'
 
     .pipe $.coffeelint 'coffeelint.json'
 
@@ -34,4 +34,4 @@ gulp.task 'coffeelint', ->
 
         title: 'CoffeeScript'
 
-        message: 'Lint completely!'
+        message: cfg.message.coffeelint

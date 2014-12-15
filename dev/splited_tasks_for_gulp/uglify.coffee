@@ -34,9 +34,9 @@ _cmprs = lazypipe()
 
 gulp.task 'cmprs_js', ->
 
-    root_js_src = gulp.src './*.js'
+    root_js_src = gulp.src cfg.path.root_js_src + '*.js'
 
-    splited_tasks_js_src = gulp.src './gulp/*.js'
+    splited_tasks_js_src = gulp.src cfg.path.splited_tasks_js_src + '*.js'
 
     root_js_src.pipe _cmprs()
 
@@ -46,7 +46,7 @@ gulp.task 'cmprs_js', ->
 
         title: 'JS Compression'
 
-        message: 'JS files from root have been compressed completely!'
+        message: cfg.message.cmprs_root_js_src
 
     splited_tasks_js_src.pipe _cmprs()
 
@@ -56,6 +56,6 @@ gulp.task 'cmprs_js', ->
 
         title: 'JS Compression'
 
-        message: 'JS files from "gulp" folder have been compressed completely!'
+        message: cfg.message.cmprs_splited_tasks_js_src
 
     return mrg root_js_src, splited_tasks_js_src

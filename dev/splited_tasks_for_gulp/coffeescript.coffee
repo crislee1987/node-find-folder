@@ -32,7 +32,7 @@ _coffeelint = lazypipe()
 
 gulp.task 'coffeescript', ->
 
-    gulp.src 'dev/node.find.folder.coffee'
+    gulp.src cfg.path.dev + 'node.find.folder.coffee'
 
     .pipe $.plumber()
 
