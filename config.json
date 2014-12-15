@@ -20,6 +20,16 @@
 
     },
 
+    "notify_opts": {
+
+        "title": "Gulp Notification",
+
+        "message": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+
+        "sound": true
+
+    },
+
     "clp": ["notify"],
 
     "path": {},
