@@ -30,11 +30,11 @@ order.forEach (the) ->
 
     gulp.task cln_prefix + the, ->
 
-        $.util.log 'The results of the folder to be find found: ', ff the,
+        $.util.log 'The results of the folder to be find found: ', new ff the,
 
             nottraversal: ['.git', 'node_modules', 'backup']
 
-        ff_result = ff the,
+        ff_result = new ff the,
 
             nottraversal: ['.git', 'node_modules', 'backup']
 
