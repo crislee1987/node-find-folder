@@ -269,22 +269,21 @@ traverse_scope = (->
 
 
 
-ifExistInRoot = (target) ->
+ifExistInRoot = () ->
 
-    traverse_scope.getInstance().includes target
+    traverse_scope.getInstance().includes arguments[0]
 
 
-
+#matches zero or more directories and subdirectories searching for matches
 traversal_pattern = (target) ->
 
     if ifExistInRoot target
 
-        #matches zero or more directories and subdirectories searching for matches
-        pattern = '+(' + _filter(traverse_scope.getInstance(), target).join('|') + ')/**/' + target
+        pattern = '+(' + _filter(_filter(traverse_scope.getInstance(), target), _options.nottraversal).join('|') + ')/**/' + target
 
     else
 
-        pattern = '+(' + traverse_scope.getInstance().join('|') + ')/**/' + target
+        pattern = '+(' + _filter(traverse_scope.getInstance(), _options.nottraversal).join('|') + ')/**/' + target
 
     return pattern
 
@@ -318,4 +317,12 @@ getFolders = ->
 
 
 
-module.exports = getFolders
+class FF
+
+    constructor: (@folderTarget, @searchOptions) ->
+
+        return getFolders @folderTarget, @searchOptions
+
+
+
+module.exports = FF
