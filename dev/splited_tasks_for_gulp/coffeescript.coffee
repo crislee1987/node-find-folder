@@ -30,15 +30,31 @@ _coffeelint = lazypipe()
 
 
 
+_cs = lazypipe()
+
+    .pipe $.plumber
+
+    .pipe ->
+
+        $.if clp.coffeelint, _coffeelint()
+
+    .pipe $.coffee, cfg.cs_opts
+
+
+
 gulp.task 'coffeescript', ->
 
-    gulp.src cfg.path.dev + 'node.find.folder.coffee'
 
-    .pipe $.plumber()
+    ff_src = gulp.src cfg.path.dev + 'node.find.folder.coffee'
 
-    .pipe $.if clp.coffeelint, _coffeelint()
+    test_src = gulp.src cfg.path.dev + 'test.coffee'
 
-    .pipe $.coffee cfg.cs_opts
+    gulpfile_src = gulp.src cfg.path.dev + 'gulpfile.coffee'
+
+
+    ff_src.pipe $.changed cfg.path.project_root
+
+    .pipe _cs()
 
     .pipe $.rename
 
@@ -48,4 +64,21 @@ gulp.task 'coffeescript', ->
 
         extname: '.js'
 
-    .pipe gulp.dest './'
+    .pipe gulp.dest cfg.path.project_root
+
+
+    test_src.pipe $.changed cfg.path.test
+
+    .pipe _cs()
+
+    .pipe gulp.dest cfg.path.test
+
+
+    gulpfile_src.pipe $.changed cfg.path.project_root
+
+    .pipe _cs()
+
+    .pipe gulp.dest cfg.path.project_root
+
+
+    return
