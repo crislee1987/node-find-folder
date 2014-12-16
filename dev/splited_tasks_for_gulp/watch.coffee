@@ -20,7 +20,7 @@ $      = require('gulp-load-plugins')()
 
 gulp.task 'watch', ->
 
-    gulp.watch 'node.find.folder.coffee',
+    gulp.watch '*.coffee',
 
         cwd: 'dev'
 

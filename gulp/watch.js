@@ -1,1 +1,1 @@
-"use strict";var $,cfg,gulp;cfg=require("../config.json"),gulp=require("gulp"),$=require("gulp-load-plugins")(),gulp.task("watch",function(){gulp.watch("node.find.folder.coffee",{cwd:"dev"},["coffeescript"])});
+"use strict";var $,cfg,gulp;cfg=require("../config.json"),gulp=require("gulp"),$=require("gulp-load-plugins")(),gulp.task("watch",function(){gulp.watch("*.coffee",{cwd:"dev"},["coffeescript"])});
