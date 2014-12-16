@@ -13,7 +13,7 @@ find-folder
 Primer
 ------
 
-**Use just the name of folder** to find the folder(s), rather than through given path(s)  - To search the targeted directory(s) you want in the whole project，returns array type result. Then, you can do anything you want with the result! For batch operations which according to the directory(s).
+**Use just the name of folder** to find the folder(s), rather than through given path(s)  - To search the targeted directory(s) you want in the whole project，return array type result. Then, you can do anything you want with the result! For batch operations which according to the directory(s).
 
 It uses the `glob` library to do some matching work.
 
@@ -194,8 +194,40 @@ Return array type data which contain the path(s) of matched folder(s).
 
 
 
+Helping `node-find-folder`
+--------------------------
+
+#### What's `node-find-folder` working on next?
+
+You can check the plan of development in my related [*Trello*](https://trello.com/b/Hc2tSxlR '点击 · Click') board! I use [*Trello*](https://trello.com/ '点击 · Click') to manage the plan of this project. And we can discuss a lot through the related board! Of course we can use [*Gitter*](https://gitter.im/iTonyYo/node-find-folder '点击 · Click') to discuss, too! You can choose your favorite kind of communication form!
+
+#### My requirement is not met!
+
+A person's strength is limited, I will ignore something... Or, I just did not get the idea what you think... If you'd like to help to improve the project, whelcome you to present your ideas on [*Gitter*](https://gitter.im/iTonyYo/node-find-folder '点击 · Click') or [*Trello*](https://trello.com/b/Hc2tSxlR '点击 · Click'). I will be very gratefull!
+
+#### I found a bug!
+
+If you found a repeatable bug, and tips from [*Usage*](https://github.com/iTonyYo/node-find-folder#usage '点击 · Click') section didn't help, then be sure to [*search existing issues*](https://github.com/iTonyYo/node-find-folder/issues '点击 · Click') first. If there's no content is similar with the problem you found, welcome you to create a new issue you found!
+
+#### I want to help with the code!
+
+Awesome! I use Github to managed code. So there are lots of ways you can help. First read [*CONTRIBUTING.md*](https://github.com/iTonyYo/node-find-folder/blob/master/doc/CONTRIBUTION.md '点击 · Click'), then learn [*be social with Github*](https://help.github.com/articles/be-social/) and [*how to pull the repo*](https://help.github.com/articles/creating-a-pull-request/ '点击 · Click') on `node-find-folder`.
+
+
+
+Contact info
+------------
+
++ **Twitter:** [@iTonyYo](https://twitter.com/iTonyYo)
+
++ **Blog:** https://medium.com/@itonyyo
+
++ **More? Check here:**
+
+
+
 LICENSE
-------
+-------
 
 See also [*LICENSE*](https://github.com/iTonyYo/WSK_IMAGE/blob/master/LICENSE '点击 · Click') .
 
