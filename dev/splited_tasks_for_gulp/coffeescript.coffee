@@ -32,8 +32,6 @@ _coffeelint = lazypipe()
 
 _cs = lazypipe()
 
-    .pipe $.plumber
-
     .pipe ->
 
         $.if clp.coffeelint, _coffeelint()
@@ -54,6 +52,8 @@ gulp.task 'coffeescript', ->
 
     ff_src.pipe $.changed cfg.path.project_root
 
+    .pipe $.plumber()
+
     .pipe _cs()
 
     .pipe $.rename
@@ -69,12 +69,16 @@ gulp.task 'coffeescript', ->
 
     test_src.pipe $.changed cfg.path.test
 
+    .pipe $.plumber()
+
     .pipe _cs()
 
     .pipe gulp.dest cfg.path.test
 
 
     gulpfile_src.pipe $.changed cfg.path.project_root
+
+    .pipe $.plumber()
 
     .pipe _cs()
 
