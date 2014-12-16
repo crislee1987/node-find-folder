@@ -34,7 +34,11 @@
 
     "path": {
 
+        "project_root": "./",
+
         "dev": "./dev/",
+
+        "test": "./test/",
 
         "root_js_src": "./",
 
