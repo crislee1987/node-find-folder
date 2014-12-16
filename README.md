@@ -61,7 +61,7 @@ var ff, ff_result;
 
 ff = require('node-find-folder');
 
-ff_result = ff('1'); //output: ['dev/image/ui_icon_social_64px/1']
+ff_result = new ff('1'); //output: ['dev/image/ui_icon_social_64px/1']
 ```
 
 **Exist the same folder under some directories! But I just need one of them! How should I do?**
@@ -69,7 +69,7 @@ ff_result = ff('1'); //output: ['dev/image/ui_icon_social_64px/1']
 A: You can do like this:
 
 ```js
-ff_result = ff('grey', {ignore: ['dev/image/ui_icon_keyamoon_32px/grey']});
+ff_result = new ff('grey', {ignore: ['dev/image/ui_icon_keyamoon_32px/grey']});
 // output: ['dev/image/ui_icon_social_32px/grey']
 // not: ['dev/image/ui_icon_keyamoon_32px/grey', 'dev/image/ui_icon_social_32px/grey']
 ```
@@ -79,7 +79,7 @@ ff_result = ff('grey', {ignore: ['dev/image/ui_icon_keyamoon_32px/grey']});
 A: By default, this module will ignore `.git`, `node_modules` two folders. So you can just do like this:
 
 ```js
-ff_result = ff('grey', {nottraversal: ['dest']});
+ff_result = new ff('grey', {nottraversal: ['dest']});
 // the ".git", "node_modules" and "dest" folders will not be traversed in this way.
 ```
 
@@ -93,10 +93,12 @@ Code without `node-find-folder`,
 ```js
 ...
 
-// the name of folder
-var order = [ "ui_icon_keyamoon_16px", "ui_icon_keyamoon_32px", "ui_icon_social_32px"];
+var order, cln_prefix;
 
-var cln_prefix = 'clean-';
+// the name of folder
+order      = [ "ui_icon_keyamoon_16px", "ui_icon_keyamoon_32px", "ui_icon_social_32px"];
+
+cln_prefix = 'clean-';
 
 order.forEach(function (the) {
 
@@ -146,18 +148,24 @@ Code with `node-find-folder`,
 ```js
 ...
 
-ff         = require('node-find-folder');
+var ff, order, cln_prefix;
+
+ff = require('node-find-folder');
 
 // the name of folder
-var order = [ "ui_icon_keyamoon_16px", "ui_icon_keyamoon_32px", "ui_icon_social_32px"];
+order = [ "ui_icon_keyamoon_16px", "ui_icon_keyamoon_32px", "ui_icon_social_32px"];
 
-var cln_prefix = 'clean-';
+cln_prefix = 'clean-';
 
 order.forEach(function (the) {
 
     gulp.task(cln_prefix + the, function () {
 
-        ff(the).forEach(function (_item, _index, _array) {
+        var ff_result;
+
+        ff_result = new ff(the);
+
+        ff_result.forEach(function (_item, _index, _array) {
 
             del(_item + '/*');
 
@@ -222,7 +230,7 @@ Contact info
 
 + **Blog:** https://medium.com/@itonyyo
 
-+ **More? Check here:**
++ **More? Check here:** http://www.evernote.com/l/AIdKUowUzdNLbK_gDY54E0gAqdcNuAol59E/
 
 
 
