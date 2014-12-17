@@ -128,15 +128,11 @@
 
 		"gulp-util": "^3.0.1",
 
-		"gulp-flatten": "^0.0.4",
-
 		"gulp-if": "^1.2.5",
 
 		"gulp-changed": "^1.1.0",
 
 		"gulp-plumber": "^0.6.6",
-
-		"gulp-size": "^1.1.0",
 
 		"gulp-rename": "^1.2.0",
 
