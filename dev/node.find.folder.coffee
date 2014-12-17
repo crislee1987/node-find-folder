@@ -14,29 +14,31 @@ _options = undefined
 
 
 
-fs          = require 'fs'
+fs            = require 'fs'
 
-glob        = require 'glob'
+glob          = require 'glob'
 
-extend      = require 'xtend'
+extend        = require 'xtend'
 
-isFile      = require 'is-file'
+isObjectBrace = require 'is-object-brace'
 
-isDir       = require 'is-directory'
+isFile        = require 'is-file'
 
-isString    = require 'amp-is-string'
+isDir         = require 'is-directory'
 
-isArray     = require 'amp-is-array'
+isString      = require 'amp-is-string'
 
-isUndefined = require 'amp-is-undefined'
+isArray       = require 'amp-is-array'
 
-ampFilter   = require 'amp-filter'
+isUndefined   = require 'amp-is-undefined'
 
-includes    = require 'amp-contains'
+ampFilter     = require 'amp-filter'
 
-_forEach    = require 'amp-each'
+includes      = require 'amp-contains'
 
-util        = require 'gulp-util'
+_forEach      = require 'amp-each'
+
+util          = require 'gulp-util'
 
 
 
@@ -52,12 +54,6 @@ _default =
 	nottraversal: ['.git', 'node_modules']
 
 	ignore: []
-
-
-
-isObjectBrace = (target) ->
-
-    !!target and typeof target is 'object' and Object::toString.call(target) isnt '[object Array]' and typeof target isnt 'function'
 
 
 # @function convertTo_Obj
