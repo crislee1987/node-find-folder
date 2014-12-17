@@ -1,0 +1,1 @@
+"use strict";var $,cfg,gulp;cfg=require("../config.json"),gulp=require("gulp"),$=require("gulp-load-plugins")(),gulp.task("mocha",function(){return gulp.src(cfg.path.test+"test.js").pipe($.mocha())});
