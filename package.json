@@ -2,7 +2,7 @@
 
 	"name": "node-find-folder",
 
-	"description": "Use just the name of folder to find folder(s), rather than through path  - To search the targeted directory(s) you want，returns array type data. Then, you can do anything you want! For batch operations which according to the directory(s).",
+	"description": "Use just the name of folder to find the folder(s), rather than through given path(s) - To search the targeted directory(s) you want in the whole project，return array type result. Then, you can do anything you want with the result! For batch operations which according to the directory(s).",
 
 	"keywords": [
 
