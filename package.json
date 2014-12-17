@@ -82,6 +82,8 @@
 
 		"xtend": "^4.0.0",
 
+		"is-object-brace": "^0.1.0",
+
 		"amp-filter": "^1.0.0",
 
 		"amp-contains": "^1.0.0",
