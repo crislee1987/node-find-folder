@@ -10,51 +10,49 @@
 
 
 
-assert = require 'assert'
+assert  = require 'assert'
 
-util   = require 'gulp-util'
+isArray = require 'amp-is-array'
 
-ff     = require '../index'
+util    = require 'gulp-util'
 
-
-
-ff_rslt_1 = new ff("childs_need_to_be_deteled")
-
-ff_rslt_2 = new ff("childs_need_to_be_deteled", {nottraversal: [".git", "node_modules", "backup"]})
-
-ff_rslt_3 = new ff 'childs_need_to_be_deteled',
-
-	nottraversal: ['.git', 'node_modules', 'backup']
-
-	ignore: ['test/childs_need_to_be_deteled']
+ff      = require '../index'
 
 
 
-describe '_core', ->
+describe 'NODE-FIND-FOLDER', ->
 
 	describe '#getFolders()', ->
 
-		describe '#return value', ->
+		@timeout 1000
 
-			it 'should return array type result', ->
+		describe '*return value', ->
 
-				assert.equal '[object Array]', Object::toString.call(ff_rslt_1)
+			it 'should be array type result', ->
+
+				assert.equal true, isArray new ff 'childs_need_to_be_deteled'
 
 				return
 
 			return
 
-		describe '#option setup', ->
+		describe '*option setup', ->
 
-			it 'should return ["test/childs_need_to_be_deteled"]', ->
+			it 'should return ["test/childs_need_to_be_deteled"], when |$ new ff("childs_need_to_be_deteled", {nottraversal: [".git", "node_modules", "backup"]})', ->
 
-				assert.deepEqual ["test/childs_need_to_be_deteled"], ff_rslt_2
+				assert.deepEqual ["test/childs_need_to_be_deteled"], new ff 'childs_need_to_be_deteled',
+
+					nottraversal: ['.git', 'node_modules', 'backup']
 
 				return
 
-			it 'should return empty array', ->
+			it 'should return empty array, when |$ new ff("childs_need_to_be_deteled", {nottraversal: [".git", "node_modules", "backup"],ignore: ["test/childs_need_to_be_deteled"]})', ->
 
-				assert.deepEqual [], ff_rslt_3
+				assert.deepEqual [], new ff 'childs_need_to_be_deteled',
+
+					nottraversal: ['.git', 'node_modules', 'backup']
+
+					ignore: ['test/childs_need_to_be_deteled']
 
 				return
 

@@ -1,36 +1,33 @@
 'use strict';
-var assert, ff, ff_rslt_1, ff_rslt_2, ff_rslt_3, util;
+var assert, ff, isArray, util;
 
 assert = require('assert');
+
+isArray = require('amp-is-array');
 
 util = require('gulp-util');
 
 ff = require('../index');
 
-ff_rslt_1 = new ff("childs_need_to_be_deteled");
-
-ff_rslt_2 = new ff("childs_need_to_be_deteled", {
-  nottraversal: [".git", "node_modules", "backup"]
-});
-
-ff_rslt_3 = new ff('childs_need_to_be_deteled', {
-  nottraversal: ['.git', 'node_modules', 'backup'],
-  ignore: ['test/childs_need_to_be_deteled']
-});
-
-describe('_core', function() {
+describe('NODE-FIND-FOLDER', function() {
   describe('#getFolders()', function() {
-    describe('#return value', function() {
-      it('should return array type result', function() {
-        assert.equal('[object Array]', Object.prototype.toString.call(ff_rslt_1));
+    this.timeout(1000);
+    describe('*return value', function() {
+      it('should be array type result', function() {
+        assert.equal(true, isArray(new ff('childs_need_to_be_deteled')));
       });
     });
-    describe('#option setup', function() {
-      it('should return ["test/childs_need_to_be_deteled"]', function() {
-        assert.deepEqual(["test/childs_need_to_be_deteled"], ff_rslt_2);
+    describe('*option setup', function() {
+      it('should return ["test/childs_need_to_be_deteled"], when |$ new ff("childs_need_to_be_deteled", {nottraversal: [".git", "node_modules", "backup"]})', function() {
+        assert.deepEqual(["test/childs_need_to_be_deteled"], new ff('childs_need_to_be_deteled', {
+          nottraversal: ['.git', 'node_modules', 'backup']
+        }));
       });
-      it('should return empty array', function() {
-        assert.deepEqual([], ff_rslt_3);
+      it('should return empty array, when |$ new ff("childs_need_to_be_deteled", {nottraversal: [".git", "node_modules", "backup"],ignore: ["test/childs_need_to_be_deteled"]})', function() {
+        assert.deepEqual([], new ff('childs_need_to_be_deteled', {
+          nottraversal: ['.git', 'node_modules', 'backup'],
+          ignore: ['test/childs_need_to_be_deteled']
+        }));
       });
     });
   });
