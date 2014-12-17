@@ -66,7 +66,7 @@
 
 	"scripts": {
 
-		"test": "gulp --version"
+		"test": "gulp mocha"
 
 	},
 
@@ -82,9 +82,21 @@
 
 		"xtend": "^4.0.0",
 
+		"amp-filter": "^1.0.0",
+
+		"amp-contains": "^1.0.0",
+
+		"amp-each": "^1.0.0",
+
 		"is-file": "^1.0.0",
 
 		"is-directory": "^0.2.3",
+
+		"amp-is-string": "^1.0.0",
+
+		"amp-is-array": "^1.0.0",
+
+		"amp-is-undefined": "^1.0.0",
 
 		"gulp-util": "^3.0.1"
 
@@ -135,6 +147,8 @@
 		"gulp-coffeelint": "^0.4.0",
 
 		"gulp-uglify": "^1.0.2",
+
+		"gulp-mocha": "^2.0.0",
 
 		"gulp-load-plugins": "^0.8.0"
 
