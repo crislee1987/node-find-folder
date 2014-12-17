@@ -28,28 +28,28 @@ cln_prefix = 'clean-'
 
 order.forEach (the) ->
 
-    gulp.task cln_prefix + the, ->
+	gulp.task cln_prefix + the, ->
 
-        $.util.log 'The results of the folder to be find found: ', new ff the,
+		$.util.log 'The results of the folder to be find found: ', new ff the,
 
-            nottraversal: ['.git', 'node_modules', 'backup']
+			nottraversal: ['.git', 'node_modules', 'backup']
 
-        ff_result = new ff the,
+		ff_result = new ff the,
 
-            nottraversal: ['.git', 'node_modules', 'backup']
+			nottraversal: ['.git', 'node_modules', 'backup']
 
-        ff_result.forEach (_item, _index, _array) ->
+		ff_result.forEach (_item, _index, _array) ->
 
-            del _item + '/*'
+			del _item + '/*'
 
-            return
+			return
 
-        return
+		return
 
-    return
+	return
 
 
 
 gulp.task 'clean', order.map (the) ->
 
-    cln_prefix + the
+	cln_prefix + the

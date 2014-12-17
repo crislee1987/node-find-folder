@@ -20,6 +20,6 @@ run_sequence = require 'run-sequence'
 
 gulp.task 'default', (cb) ->
 
-    run_sequence ['coffeescript'], ['watch'], cb
+	run_sequence ['coffeescript'], ['watch'], cb
 
-    return
+	return

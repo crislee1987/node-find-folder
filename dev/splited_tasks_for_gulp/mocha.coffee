@@ -20,6 +20,6 @@ $            = require('gulp-load-plugins')()
 
 gulp.task 'mocha', ->
 
-    gulp.src cfg.path.test + 'test.js'
+	gulp.src cfg.path.test + 'test.js'
 
-    .pipe $.mocha()
+	.pipe $.mocha()

@@ -24,42 +24,42 @@ ff_rslt_2 = new ff("childs_need_to_be_deteled", {nottraversal: [".git", "node_mo
 
 ff_rslt_3 = new ff 'childs_need_to_be_deteled',
 
-    nottraversal: ['.git', 'node_modules', 'backup']
+	nottraversal: ['.git', 'node_modules', 'backup']
 
-    ignore: ['test/childs_need_to_be_deteled']
+	ignore: ['test/childs_need_to_be_deteled']
 
 
 
 describe '_core', ->
 
-    describe '#getFolders()', ->
+	describe '#getFolders()', ->
 
-        describe '#return value', ->
+		describe '#return value', ->
 
-            it 'should return array type result', ->
+			it 'should return array type result', ->
 
-                assert.equal '[object Array]', Object::toString.call(ff_rslt_1)
+				assert.equal '[object Array]', Object::toString.call(ff_rslt_1)
 
-                return
+				return
 
-            return
+			return
 
-        describe '#option setup', ->
+		describe '#option setup', ->
 
-            it 'should return ["test/childs_need_to_be_deteled"]', ->
+			it 'should return ["test/childs_need_to_be_deteled"]', ->
 
-                assert.deepEqual ["test/childs_need_to_be_deteled"], ff_rslt_2
+				assert.deepEqual ["test/childs_need_to_be_deteled"], ff_rslt_2
 
-                return
+				return
 
-            it 'should return empty array', ->
+			it 'should return empty array', ->
 
-                assert.deepEqual [], ff_rslt_3
+				assert.deepEqual [], ff_rslt_3
 
-                return
+				return
 
-            return
+			return
 
-        return
+		return
 
-    return
+	return

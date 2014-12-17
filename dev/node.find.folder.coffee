@@ -34,7 +34,7 @@ ampFilter   = require 'amp-filter'
 
 includes    = require 'amp-contains'
 
-_forEach     = require 'amp-each'
+_forEach    = require 'amp-each'
 
 util        = require 'gulp-util'
 
@@ -42,79 +42,79 @@ util        = require 'gulp-util'
 
 _default =
 
-    nottraversal: ['.git', 'node_modules']
+	nottraversal: ['.git', 'node_modules']
 
-    ignore: []
+	ignore: []
 
 
 
 isObject = (target) ->
 
-    rslt = if not isUndefined(target) and isUndefined(target.length) then true else false
+	rslt = if not isUndefined(target) and isUndefined(target.length) then true else false
 
 
 
 convertTo_Obj = (filter) ->
 
-    obj = {}
+	obj = {}
 
-    if isArray filter
+	if isArray filter
 
-        _forEach filter, (_item, _index, _array) ->
+		_forEach filter, (_item, _index, _array) ->
 
-            obj[_item] = _index
+			obj[_item] = _index
 
-    else if isString filter
+	else if isString filter
 
-        obj[filter] = 0
+		obj[filter] = 0
 
-    return obj
+	return obj
 
 
 
 _filter = (arr, filter) ->
 
-    exclude = (item) ->
+	exclude = (item) ->
 
-        (item not of convertTo_Obj(filter))
+		(item not of convertTo_Obj(filter))
 
-    ampFilter arr, exclude
+	ampFilter arr, exclude
 
 
 
 _readDirFolderCache = (->
 
-    instance = undefined
+	instance = undefined
 
-    init = ->
+	init = ->
 
-        list = fs.readdirSync process.cwd()
+		list = fs.readdirSync process.cwd()
 
-        folders = []
+		folders = []
 
-        _deal = (_item, _index, _array) ->
+		_deal = (_item, _index, _array) ->
 
-            if isDir _item
+			if isDir _item
 
-                folders.push _item
+				folders.push _item
 
-            return
+			return
 
-        _forEach list, _deal
+		_forEach list, _deal
 
-        return folders
+		return folders
 
-    return {
+	return {
 
-        getInstance: ->
+		getInstance: ->
 
-            if !instance
+			if !instance
 
-                instance = init()
+				instance = init()
 
-            return instance
+			return instance
 
-    }
+	}
 
 )()
 
@@ -122,70 +122,70 @@ _readDirFolderCache = (->
 
 traverse_scope = ->
 
-    _filter _readDirFolderCache.getInstance(), _options.nottraversal
+	_filter _readDirFolderCache.getInstance(), _options.nottraversal
 
 
 
 ignoreFilter = (matched) ->
 
-    _filter matched, _options.ignore
+	_filter matched, _options.ignore
 
 
 
-ifExistInRoot = () ->
+ifExistInRoot = ->
 
-    includes traverse_scope(), arguments[0]
+	includes traverse_scope(), arguments[0]
 
 
 
 #matches zero or more directories and subdirectories searching for matches
 traversal_pattern = (target) ->
 
-    if ifExistInRoot target
+	if ifExistInRoot target
 
-        pattern = '+(' + _filter(traverse_scope(), target).join('|') + ')/**/' + target
+		pattern = '+(' + _filter(traverse_scope(), target).join('|') + ')/**/' + target
 
-    else
+	else
 
-        pattern = '+(' + traverse_scope().join('|') + ')/**/' + target
+		pattern = '+(' + traverse_scope().join('|') + ')/**/' + target
 
-    return pattern
+	return pattern
 
 
 
 getFolders = ->
 
-    target = arguments[0]
+	target = arguments[0]
 
-    option = arguments[1]
+	option = arguments[1]
 
-    if not isUndefined option
+	if not isUndefined option
 
-        if isObject option
+		if isObject option
 
-            _options = extend _default, option
+			_options = extend _default, option
 
-    else
+	else
 
-        _options = _default
+		_options = _default
 
-    if isString(target) and not isFile(target)
+	if isString(target) and not isFile(target)
 
-        traversal_matched = glob.sync traversal_pattern target
+		traversal_matched = glob.sync traversal_pattern target
 
-        if ifExistInRoot target
+		if ifExistInRoot target
 
-            traversal_matched.push target
+			traversal_matched.push target
 
-    return ignoreFilter traversal_matched
+	return ignoreFilter traversal_matched
 
 
 
 class FF
 
-    constructor: (@folderTarget, @searchOptions) ->
+	constructor: (@folderTarget, @searchOptions) ->
 
-        return getFolders @folderTarget, @searchOptions
+		return getFolders @folderTarget, @searchOptions
 
 
 

@@ -20,10 +20,10 @@ $      = require('gulp-load-plugins')()
 
 gulp.task 'watch', ->
 
-    gulp.watch '*.coffee',
+	gulp.watch '*.coffee',
 
-        cwd: 'dev'
+		cwd: 'dev'
 
-    , ['coffeescript']
+	, ['coffeescript']
 
-    return
+	return
