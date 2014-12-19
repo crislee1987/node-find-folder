@@ -28,11 +28,19 @@
 
 		"get paths of specific folders",
 
+		"scandir",
+
+		"scandirectory",
+
+		"glob-find-folders",
+
 		"minimatch",
 
 		"glob",
 
-		"glob-find-folders",
+		"path",
+
+		"fs",
 
 		"gulp"
 
