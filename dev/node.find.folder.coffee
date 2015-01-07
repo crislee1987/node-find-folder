@@ -38,8 +38,6 @@ includes      = require 'amp-contains'
 
 _forEach      = require 'amp-each'
 
-util          = require 'gulp-util'
-
 
 
 # @name _default
