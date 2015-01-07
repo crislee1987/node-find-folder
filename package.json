@@ -100,25 +100,23 @@
 
 		"xtend": "^4.0.0",
 
-		"is-object-brace": "^0.1.1",
+		"is-object-brace": "^0.1.3",
 
-		"amp-filter": "^1.0.0",
+		"amp-filter": "^1.0.1",
 
-		"amp-contains": "^1.0.0",
+		"amp-contains": "^1.0.1",
 
-		"amp-each": "^1.0.0",
+		"amp-each": "^1.0.1",
 
 		"is-file": "^1.0.0",
 
 		"is-directory": "^0.2.3",
 
-		"amp-is-string": "^1.0.0",
+		"amp-is-string": "^1.0.1",
 
-		"amp-is-array": "^1.0.0",
+		"amp-is-array": "^1.0.1",
 
-		"amp-is-undefined": "^1.0.0",
-
-		"gulp-util": "^3.0.1"
+		"amp-is-undefined": "^1.0.1"
 
 	},
 
@@ -130,23 +128,15 @@
 
 		"run-sequence": "^1.0.2",
 
-		"glob": "^4.3.2",
-
-		"del": "^1.1.0",
-
-		"xtend": "^4.0.0",
+		"del": "^1.1.1",
 
 		"minimist": "^1.1.0",
-
-		"is-file": "^1.0.0",
-
-		"is-directory": "^0.2.3",
 
 		"lazypipe": "^0.2.2",
 
 		"merge-stream": "^0.1.6",
 
-		"gulp-util": "^3.0.1",
+		"gulp-util": "^3.0.2",
 
 		"gulp-if": "^1.2.5",
 
