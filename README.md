@@ -13,7 +13,7 @@ find-folder
 Primer
 ------
 
-**Use just the name of folder** to find the folder(s), rather than through given path(s)  - To search the targeted directory(s) you want in the whole project，return array type result. Then, you can do anything you want with the result! For batch operations which according to the directory(s).
+Walk a directory tree in node.js. **Use just the name of folder** to find the folder(s), rather than through given path(s)  - To search the targeted directory(s) you want in the whole project，return array type result. Then, you can do anything you want with the result! For batch operations which according to the directory(s).
 
 It uses the `glob` library to do some matching work.
 
