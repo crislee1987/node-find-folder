@@ -5,11 +5,11 @@ node_js:
 before_install:
   - sudo apt-get install rubygems
   - sudo apt-get update
-  - npm install -g mocha -d
-  - npm install -g gulp -d
-  - npm install -g jade -d
+  - sudo npm install -g mocha
+  - sudo npm install -g gulp
+  - sudo npm install -g jade
   - sudo gem install sass
-  - npm install -g coffee-script -d
+  - sudo npm install -g coffee-script
 notifications:
   webhooks:
     urls:
