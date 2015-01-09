@@ -3,9 +3,9 @@ node_js:
   - "0.10"
   - "0.11"
 before_install:
-  - sudo npm install -g mocha
-  - sudo npm install -g gulp
-  - sudo npm install -g coffee-script
+  - npm install -g mocha
+  - npm install -g gulp
+  - npm install -g coffee-script -d
 notifications:
   webhooks:
     urls:
