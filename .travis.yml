@@ -2,6 +2,14 @@ language: node_js
 node_js:
   - "0.10"
   - "0.11"
+before_install:
+  - sudo apt-get install rubygems
+  - sudo apt-get update
+  - npm install -g mocha -d
+  - npm install -g gulp -d
+  - npm install -g jade -d
+  - sudo gem install sass
+  - npm install -g coffee-script -d
 notifications:
   webhooks:
     urls:
