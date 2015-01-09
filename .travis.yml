@@ -3,12 +3,8 @@ node_js:
   - "0.10"
   - "0.11"
 before_install:
-  - sudo apt-get install rubygems
-  - sudo apt-get update
   - sudo npm install -g mocha
   - sudo npm install -g gulp
-  - sudo npm install -g jade
-  - sudo gem install sass
   - sudo npm install -g coffee-script
 notifications:
   webhooks:
