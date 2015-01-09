@@ -24,8 +24,6 @@ describe 'NODE-FIND-FOLDER', ->
 
 	describe '#getFolders()', ->
 
-		@timeout 1000
-
 		describe '*return value', ->
 
 			it 'should be array type result', ->

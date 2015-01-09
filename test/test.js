@@ -11,7 +11,6 @@ ff = require('../index');
 
 describe('NODE-FIND-FOLDER', function() {
   describe('#getFolders()', function() {
-    this.timeout(1000);
     describe('*return value', function() {
       it('should be array type result', function() {
         assert.equal(true, isArray(new ff('childs_need_to_be_deteled')));
